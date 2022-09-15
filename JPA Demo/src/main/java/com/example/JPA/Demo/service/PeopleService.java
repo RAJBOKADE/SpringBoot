@@ -21,12 +21,12 @@ public class PeopleService {
     private PeopleMapper peopleMapper;
 
 
-   //Traditional Method
-    public PeopleResponse createPeople (People people){
+    //Traditional Method of create/save people
+    public PeopleResponse createPeople(People people) {
         PeopleEntity peopleEntity = new PeopleEntity();
         peopleEntity.setFirstName(people.getFirstName());
         peopleEntity.setLastName(people.getLastName());
-        Long id = (long) (Math.random()*20);
+        Long id = (long) (Math.random() * 20);
         peopleEntity.setId(id);
         PeopleResponse peopleResponse = new PeopleResponse();
         peopleResponse.setId(peopleEntity.getId());
@@ -35,25 +35,26 @@ public class PeopleService {
     }
 
 
-//Mapper Method
-    public PeopleResponse save(People people){
-        PeopleEntity peopleEntity=new PeopleEntity();
-        peopleEntity=peopleMapper.peopleToEntity(people);
-        PeopleResponse peopleResponse=new PeopleResponse();
-        Long id=(long) (Math.random()*20);
+    //Mapper Method of save/create people
+    public PeopleResponse save(People people) {
+        PeopleEntity peopleEntity = new PeopleEntity();
+        peopleEntity = peopleMapper.peopleToEntity(people);
+        PeopleResponse peopleResponse = new PeopleResponse();
+        Long id = (long) (Math.random() * 20);
         peopleEntity.setId(id);
         peopleResponse.setId(peopleEntity.getId());
         peopleRepository.save(peopleEntity);
         return peopleResponse;
     }
 
-    public People getPeople (Long peopleId){
+
+    //Get Method Mapper
+    public People getPeople(Long peopleId) {
         People people = new People();
         Optional<PeopleEntity> peopleEntityOptional = peopleRepository.findById(peopleId);
-        if(peopleEntityOptional.isPresent()) {
+        if (peopleEntityOptional.isPresent()) {
             people = peopleMapper.entityToPeople(peopleEntityOptional.get());
-        }
-        else {
+        } else {
             log.info("People id" + peopleId + "Not Found");
 
         }
@@ -61,5 +62,23 @@ public class PeopleService {
     }
 
 
+    public void updatePeople(Long peopleid, People people) {
+        PeopleEntity peopleEntity = new PeopleEntity();
+        Optional<PeopleEntity> peopleEntityOptional = peopleRepository.findById(peopleid);
+        if (peopleEntityOptional.isPresent()) {
+            peopleEntityOptional.get().setFirstName(people.getFirstName());
+            peopleEntityOptional.get().setLastName(people.getLastName());
+            peopleRepository.save(peopleEntityOptional.get());
 
+        }
+        else {
+            log.info("People Id" + peopleid + "Not Found");
+        }
+
+        //return people;
+    }
+
+    public void deletePeople(Long peopleId) {
+        peopleRepository.deleteById(peopleId);
+    }
 }
