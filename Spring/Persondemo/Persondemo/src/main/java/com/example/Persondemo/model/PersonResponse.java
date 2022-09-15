@@ -1,2 +1,9 @@
-package com.example.Persondemo.model;public class PersonResponse {
+package com.example.Persondemo.model;
+
+import lombok.Data;
+
+@Data
+public class PersonResponse {
+    private int id;
+
 }
