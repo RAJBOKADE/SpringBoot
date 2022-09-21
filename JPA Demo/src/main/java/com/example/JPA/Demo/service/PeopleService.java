@@ -78,6 +78,18 @@ public class PeopleService {
         //return people;
     }
 
+   /* public People updatePeople(Long peopleid, People people){
+        Optional<PeopleEntity> peopleEntity = peopleRepository.findById(peopleid);
+        if(peopleEntity.isPresent()){
+            peopleEntity = peopleMapper.peopleToEntity();
+            peopleRepository.save(peopleEntity.get());
+        }
+        else {
+            log.info("People Id" +peopleid + "Not Found");
+        }
+        return people;
+    }*/
+
     public void deletePeople(Long peopleId) {
         peopleRepository.deleteById(peopleId);
     }
