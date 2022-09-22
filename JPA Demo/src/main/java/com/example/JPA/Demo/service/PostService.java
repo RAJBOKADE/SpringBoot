@@ -47,8 +47,14 @@ public class PostService {
         httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<Post> httpEntity = new HttpEntity<>(httpHeaders);
         restTemplate.exchange(testUrl +"/posts/{userId}", HttpMethod.DELETE, httpEntity, Post.class, userId);*/
-
         restTemplate.delete(testUrl+"/posts/{id}", Post.class, userId);
 
     }
+
+    public  PostResponse updatePost(Long id, PostResponse postRespoonse) {
+        HttpEntity http = new HttpEntity<>(postRespoonse);
+        ResponseEntity<PostResponse> response = restTemplate.exchange(testUrl + "/posts/"+id, HttpMethod.PUT, http, PostResponse.class, id);
+        return response.getBody();
+    }
+
 }
