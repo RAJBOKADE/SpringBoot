@@ -143,10 +143,6 @@ G
 PingDemo/Dockerfile.txt,4\3\43a14c187ea640380b6bb3e443ccd3c1519f2c68
 t
 DPingDemo/src/main/java/com/example/PingDemo/PingDemoApplication.java,c\8\c8b760883878a6863f910b1ee27563108efdfaab
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-k
-;src/main/java/com/example/PingDemo/PingDemoApplication.java,1\8\183eb14429fc3f8ab1490afe9f179de69da6641a
 >
 Dockerfile.txt,b\e\be43c0fb4a1bab1c8655cc56ff17a1c9e804a9fa
 q

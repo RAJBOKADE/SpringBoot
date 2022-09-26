@@ -14,13 +14,12 @@ public class PersonService {
     @Autowired
     private  PersonRepository personRepository;
     @Autowired
-
     private  AddressRepository addressRepository;
 
 
     public PersonResponse createPerson(Person person) {
-        PersonEntity personEntity=null;
-        AddressEntity addressEntity=null;
+        PersonEntity personEntity=new PersonEntity();
+       AddressEntity addressEntity=new AddressEntity();
         PersonResponse pResponse = new PersonResponse();
         addressEntity.setAddress1(person.getAddress().getAddress1());
         addressEntity.setAddress2(person.getAddress().getAddress2());
@@ -30,8 +29,11 @@ public class PersonService {
         addressRepository.save(addressEntity);
         personEntity.setFirstName(person.getFirstName());
         personEntity.setLastName(person.getLastName());
-        personEntity.setAddress(addressEntity);
+        personEntity.setAddressEntity(addressEntity);
         personRepository.save(personEntity);
+        pResponse.setPersonId(personEntity.getId());
         return pResponse;
     }
+
+
 }
