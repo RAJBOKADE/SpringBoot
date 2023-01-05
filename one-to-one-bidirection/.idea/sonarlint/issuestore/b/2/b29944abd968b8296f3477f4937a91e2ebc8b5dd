@@ -1,0 +1,9 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´¿—°şÿÿÿÿ
+R
+java:S3655i"7Call "Optional#isPresent()" before accessing the value.(Ù±Ïšúÿÿÿÿ
+L
+java:S3655h"7Call "Optional#isPresent()" before accessing the value.(À¾ú
+V
+java:S1854?";Remove this useless assignment to local variable "address".(¿Çšşÿÿÿÿ
+V	java:S125["<This block of commented-out lines of code should be removed.(ıº¤÷ùÿÿÿÿ
